@@ -20,7 +20,8 @@
       "predictiveBackGestureEnabled": false
     },
     "web": {
-      "output": "static",
+      "bundler": "metro",
+      "output": "server",
       "favicon": "./assets/images/favicon.png"
     },
     "plugins": [
@@ -28,9 +29,21 @@
       [
         "expo-splash-screen",
         {
-          "backgroundColor": "#208AEF",
-          "image": "./assets/images/splash-icon.png",
-          "imageWidth": 76
+          "backgroundColor": "#2563EB",
+          "image": "./assets/images/splash-logo-white.png",
+          "imageWidth": 280,
+          "resizeMode": "contain"
+          //  "dark": {
+          //   "backgroundColor": "#1E3A8A",
+          //   "image": "./assets/images/splash-logo-dark.png"
+          // }
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Allow MyWorkout Tracker to access your photos so you can choose a workout cover.",
+          "microphonePermission": false
         }
       ]
     ],
