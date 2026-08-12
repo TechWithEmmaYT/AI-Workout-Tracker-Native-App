@@ -1,10 +1,11 @@
 import { useAppThemeColor } from "@/theme/app-theme";
 import { Feather } from "@expo/vector-icons";
-import { Tabs } from "expo-router";
+import { Tabs, useRouter } from "expo-router";
 import { Pressable, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 export default function Tablayout() {
+  const router = useRouter();
   const insets = useSafeAreaInsets();
   const tabBackground = useAppThemeColor("tabBackground");
   const primary = useAppThemeColor("primary");
@@ -28,7 +29,7 @@ export default function Tablayout() {
           paddingBottom: 7,
           paddingTop: 6,
           borderRadius: 50,
-          marginHorizontal: 10,
+          marginHorizontal: 8,
           shadowColor: "#333",
           borderColor: border,
           borderWidth: 0.5,
@@ -57,6 +58,12 @@ export default function Tablayout() {
       />
       <Tabs.Screen
         name="create"
+        listeners={{
+          tabPress: (event) => {
+            event.preventDefault();
+            router.push("/workout/create");
+          },
+        }}
         options={{
           tabBarButton: ({ onPress }) => (
             <Pressable
@@ -68,8 +75,9 @@ export default function Tablayout() {
               </View>
             </Pressable>
           ),
+          tabBarAccessibilityLabel: "Create workout",
           tabBarLabel: () => null,
-          title: "Create",
+          title: "",
         }}
       />
       <Tabs.Screen

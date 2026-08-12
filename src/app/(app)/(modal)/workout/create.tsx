@@ -10,17 +10,17 @@ import * as ImagePicker from "expo-image-picker";
 import { useRouter } from "expo-router";
 import { useState } from "react";
 import {
-    Alert,
-    Image,
-    Linking,
-    Pressable,
-    Text,
-    TextInput,
-    View,
+  Alert,
+  Image,
+  Linking,
+  Pressable,
+  Text,
+  TextInput,
+  View,
 } from "react-native";
 import {
-    KeyboardAwareScrollView,
-    KeyboardToolbar,
+  KeyboardAwareScrollView,
+  KeyboardToolbar,
 } from "react-native-keyboard-controller";
 import { z } from "zod";
 
@@ -137,7 +137,7 @@ const CreateWorkout = () => {
       >
         <View className="flex-grow px-5 pt-3 pb-8">
           <View className="flex-row items-center justify-between">
-            <Pressable onPress={router.back}>
+            <Pressable onPress={() => router.back()}>
               <Text className="font-inter-medium text-[13px] text-destructive">
                 Cancel
               </Text>
@@ -224,7 +224,7 @@ const CreateWorkout = () => {
               {selectedExercises.map((exercise) => (
                 <View
                   key={exercise.id}
-                  className="mb-3 rounded-xl border border-border bg-card p-3"
+                  className="mb-3  rounded-xl border border-border bg-card p-3"
                 >
                   <View className="flex-row items-center">
                     {exercise.image ? (
@@ -238,63 +238,63 @@ const CreateWorkout = () => {
                       </View>
                     )}
 
-                    <View className="ml-3 flex-1">
+                    <View className="ml-3 flex-1 ">
                       <Text className="font-inter-semibold text-[13px] text-foreground">
                         {exercise.name}
                       </Text>
-                      <Text className="mt-1 font-inter text-[11px] text-muted-foreground">
+                      <Text className="mt-1 font-inter capitalize text-[12px] text-muted-foreground">
                         {exercise.muscles}
                       </Text>
-                      <Pressable onPress={() => removeExercise(exercise.id)}>
-                        <Feather color={muted} name="x" size={20} />
-                      </Pressable>
                     </View>
-
-                    {(
-                      [
-                        ["Sets", "sets", exercise.sets, 1],
-                        ["Reps", "reps", exercise.reps, 1],
-                        ["Rest Time", "rest", `${exercise.rest} sec`, 15],
-                      ] as const
-                    ).map(([label, field, value, step]) => (
-                      <View
-                        key={field}
-                        className="mt-3 flex-row items-center justify-between"
-                      >
-                        <Text className="font-inter text-[12px] text-muted-foreground">
-                          {label}
-                        </Text>
-
-                        <View className="flex-row items-center justify-center gap-3">
-                          <Pressable
-                            className="h-8 w-8 items-center justify-center rounded-lg bg-muted"
-                            onPress={() =>
-                              updateExercise(exercise.id, field, -step)
-                            }
-                          >
-                            <Feather color={muted} name="minus" size={15} />
-                          </Pressable>
-                          <Text className="w-14 text-center font-inter-semibold text-[12px] text-foreground">
-                            {value}
-                          </Text>
-                          <Pressable
-                            className="h-8 w-8 items-center justify-center rounded-lg bg-muted"
-                            onPress={() =>
-                              updateExercise(exercise.id, field, step)
-                            }
-                          >
-                            <Feather color={muted} name="plus" size={15} />
-                          </Pressable>
-                        </View>
-                      </View>
-                    ))}
+                    <Pressable onPress={() => removeExercise(exercise.id)}>
+                      <Feather color={muted} name="x" size={20} />
+                    </Pressable>
                   </View>
+
+                  {(
+                    [
+                      ["Sets", "sets", exercise.sets, 1],
+                      ["Reps", "reps", exercise.reps, 1],
+                      ["Rest Time", "rest", `${exercise.rest} sec`, 15],
+                    ] as const
+                  ).map(([label, field, value, step]) => (
+                    <View
+                      key={field}
+                      className="mt-3 flex-row items-center justify-between"
+                    >
+                      <Text className="font-inter text-[12px] text-muted-foreground">
+                        {label}
+                      </Text>
+
+                      <View className="flex-row items-center justify-center gap-3">
+                        <Pressable
+                          className="h-8 w-8 items-center justify-center rounded-lg bg-muted"
+                          onPress={() =>
+                            updateExercise(exercise.id, field, -step)
+                          }
+                        >
+                          <Feather color={muted} name="minus" size={15} />
+                        </Pressable>
+                        <Text className="w-14 text-center font-inter-semibold text-[12px] text-foreground">
+                          {value}
+                        </Text>
+                        <Pressable
+                          className="h-8 w-8 items-center justify-center rounded-lg bg-muted"
+                          onPress={() =>
+                            updateExercise(exercise.id, field, step)
+                          }
+                        >
+                          <Feather color={muted} name="plus" size={15} />
+                        </Pressable>
+                      </View>
+                    </View>
+                  ))}
                 </View>
               ))}
 
               <Button
                 leftIcon={<Feather color={primary} name="plus" size={18} />}
-                onPress={() => router.push("/workout/exercises/index")}
+                onPress={() => router.push("/workout/exercises")}
                 size="sm"
                 variant="outline"
               >

@@ -8,6 +8,7 @@ export default function Applayout() {
       }}
     >
       <Stack.Screen name="(tabs)" />
+      <Stack.Screen name="(modal)/workout" />
     </Stack>
   );
 }
