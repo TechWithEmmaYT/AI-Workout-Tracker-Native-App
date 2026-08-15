@@ -19,6 +19,13 @@ export default function WorkoutLayout() {
           }}
         />
         <Stack.Screen
+          name="[id]/active"
+          options={{
+            animation: "slide_from_bottom",
+            presentation: "fullScreenModal",
+          }}
+        />
+        <Stack.Screen
           name="exercises/index"
           options={{
             animation: "slide_from_right",

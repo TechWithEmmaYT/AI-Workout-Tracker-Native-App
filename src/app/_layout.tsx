@@ -90,10 +90,10 @@ export default function RootLayout() {
               <Stack.Protected guard={!session}>
                 <Stack.Screen name="(public)" />
               </Stack.Protected>
+              <Stack.Protected guard={!!session}>
+                <Stack.Screen name="(app)" />
+              </Stack.Protected>
             </Stack>
-            <Stack.Protected guard={!!session}>
-              <Stack.Screen name="(app)" />
-            </Stack.Protected>
           </View>
         </ThemeProvider>
       </KeyboardProvider>

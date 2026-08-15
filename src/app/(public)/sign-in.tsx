@@ -1,8 +1,6 @@
 import Button from "@/components/ui/button";
 import SafeAreaScreen from "@/components/ui/safe-area-screen";
-import {
-  isOnboardingCompleted
-} from "@/constants/onboarding";
+import { isOnboardingCompleted } from "@/constants/onboarding";
 import { authClient } from "@/lib/auth-client";
 import {
   SignInFormValues,
@@ -280,7 +278,7 @@ const SignIn = () => {
                 className="-my-3 min-h-11 justify-center px-1"
               >
                 <Text className="font-inter-semibold text-[13px] text-primary">
-                  Sign In
+                  Sign Up
                 </Text>
               </Pressable>
             </Link>

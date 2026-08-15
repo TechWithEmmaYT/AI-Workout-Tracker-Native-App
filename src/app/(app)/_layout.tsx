@@ -9,6 +9,7 @@ export default function Applayout() {
     >
       <Stack.Screen name="(tabs)" />
       <Stack.Screen name="(modal)/workout" />
+      <Stack.Screen name="(modal)/history/[id]" />
     </Stack>
   );
 }

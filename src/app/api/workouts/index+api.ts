@@ -1,6 +1,7 @@
-import { db, workoutExercises, workouts } from "@/db";
+import { db, exercises, workoutExercises, workouts } from "@/db";
 import { auth } from "@/lib/auth";
 import { uploadImage } from "@/lib/imagekit";
+import { and, count, desc, eq, sql } from "drizzle-orm";
 import { z } from "zod";
 
 const workoutSchema = z.object({
@@ -21,6 +22,49 @@ const workoutSchema = z.object({
     .max(10),
 });
 
+export async function GET(request: Request) {
+  const session = await auth.api.getSession({ headers: request.headers });
+
+  if (!session) {
+    return Response.json({ message: "Unauthorized" }, { status: 401 });
+  }
+  const limitVal = new URL(request.url).searchParams.get("limit");
+
+  const limit = limitVal
+    ? z.coerce.number().int().min(1).max(20).safeParse(limitVal)
+    : null;
+
+  if (limit && !limit.success) {
+    return Response.json(
+      {
+        message: "Invalid limit",
+      },
+      { status: 400 },
+    );
+  }
+
+  const query = db
+    .select({
+      exerciseCount: count(workoutExercises.id),
+      id: workouts.id,
+      name: workouts.name,
+      image: workouts.image,
+      muscles: sql<string>`coalesce(string_agg(distinct ${exercises.muscles}, ' • '), '')`,
+      totalSets: sql<number>`coalesce(sum(${workoutExercises.sets}), 0)::int`,
+    })
+    .from(workouts)
+    .leftJoin(workoutExercises, eq(workoutExercises.workoutId, workouts.id))
+    .leftJoin(exercises, eq(exercises.id, workoutExercises.exerciseId))
+    .where(
+      and(eq(workouts.userId, session.user.id), eq(workouts.isTemplate, false)),
+    )
+    .groupBy(workouts.id)
+    .orderBy(desc(workouts.createdAt));
+
+  const data = limit?.success ? await query.limit(limit.data) : await query;
+
+  return Response.json(data);
+}
 export async function POST(request: Request) {
   const body = await request.json();
   const session = await auth.api.getSession({

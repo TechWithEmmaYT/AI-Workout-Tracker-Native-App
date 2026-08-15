@@ -99,7 +99,7 @@ const SingleExercise = () => {
                 className="h-10 w-10 items-center justify-center rounded-full bg-black/40 active:opacity-70"
                 onPress={() => router.back()}
               >
-                <Feather color={foreground} name="arrow-left" size={22} />
+                <Feather color="white" name="arrow-left" size={22} />
               </Pressable>
               <Pressable className="h-10 w-10 items-center justify-center rounded-full bg-black/40 active:opacity-70">
                 <Feather color="white" name="bookmark" size={22} />
@@ -129,6 +129,7 @@ const SingleExercise = () => {
         border-primary bg-accent px-4 active:opacity-80 dark:bg-accent/20"
             onPress={() => setIsCoachOpen(true)}
           >
+            <Feather color={primary} name="message-circle" size={21} />
             <Text className="ml-3 flex-1 font-inter-semibold text-[14px] text-primary">
               Ask AI Coach
             </Text>

@@ -12,12 +12,13 @@
     },
     "android": {
       "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
+        "backgroundColor": "#ffffff",
         "foregroundImage": "./assets/images/android-icon-foreground.png",
         "backgroundImage": "./assets/images/android-icon-background.png",
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.techwithemma.aiworkouttracker"
     },
     "web": {
       "bundler": "metro",
@@ -33,10 +34,6 @@
           "image": "./assets/images/splash-logo-white.png",
           "imageWidth": 280,
           "resizeMode": "contain"
-          //  "dark": {
-          //   "backgroundColor": "#1E3A8A",
-          //   "image": "./assets/images/splash-logo-dark.png"
-          // }
         }
       ],
       [
