@@ -6,7 +6,7 @@ A production-ready AI workout tracker built with Expo and React Native. Create w
 >
 > This project is **free for personal use**. A commercial license is **required** for paid products, client work, content creation, or production applications.
 >
-> 👉 **[Get a Commercial License](https://techwithemma.gumroad.com/l/atlmby)**
+> 👉 **[Get a Commercial License](https://techwithemma.gumroad.com/l/wyxpb)**
 
 ---
 
@@ -74,7 +74,7 @@ If this project helps you, you can support my work by:
 
 Commercial use requires a paid license. See [TECHWITHEMMA-LICENSE.md](./TECHWITHEMMA-LICENSE.md) for the complete terms.
 
-👉 [Get a Commercial License](https://techwithemma.gumroad.com/l/atlmby)
+👉 [Get a Commercial License](https://techwithemma.gumroad.com/l/wyxpb)
 
 ---
 

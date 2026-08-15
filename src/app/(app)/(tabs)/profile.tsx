@@ -10,8 +10,8 @@ import { authClient } from "@/lib/auth-client";
 import { useAppThemeColor } from "@/theme/app-theme";
 
 const LEGAL_ORIGIN = "https://techwithemma.com";
-const PRIVACY_URL = `${LEGAL_ORIGIN}/privacy`;
-const TERMS_URL = `${LEGAL_ORIGIN}/terms`;
+const PRIVACY_URL = `${LEGAL_ORIGIN}/`;
+const TERMS_URL = `${LEGAL_ORIGIN}/`;
 
 export default function ProfilePage() {
   //const router = useRouter();

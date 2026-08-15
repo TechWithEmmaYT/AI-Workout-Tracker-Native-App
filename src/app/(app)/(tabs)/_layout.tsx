@@ -1,3 +1,4 @@
+//import { NativeTabs } from "expo-router/native-tabs";
 import { useAppThemeColor } from "@/theme/app-theme";
 import { Feather } from "@expo/vector-icons";
 import { Tabs, useRouter } from "expo-router";
@@ -104,3 +105,39 @@ export default function Tablayout() {
     </Tabs>
   );
 }
+
+// For Ios Simulator Test NativeTab
+// function IOSTabLayout() {
+//   return (
+//     <NativeTabs>
+//       <NativeTabs.Trigger name="index">
+//         <NativeTabs.Trigger.Label>Home</NativeTabs.Trigger.Label>
+//         <NativeTabs.Trigger.Icon sf="house" />
+//       </NativeTabs.Trigger>
+
+//       <NativeTabs.Trigger name="workouts">
+//         <NativeTabs.Trigger.Label>Workouts</NativeTabs.Trigger.Label>
+//         <NativeTabs.Trigger.Icon sf="figure.strengthtraining.traditional" />
+//       </NativeTabs.Trigger>
+
+//       <NativeTabs.Trigger name="create">
+//         <NativeTabs.Trigger.Label>Create</NativeTabs.Trigger.Label>
+//         <NativeTabs.Trigger.Icon sf="plus.circle.fill" />
+//       </NativeTabs.Trigger>
+
+//       <NativeTabs.Trigger name="history">
+//         <NativeTabs.Trigger.Label>History</NativeTabs.Trigger.Label>
+//         <NativeTabs.Trigger.Icon sf="calendar" />
+//       </NativeTabs.Trigger>
+
+//       <NativeTabs.Trigger name="profile">
+//         <NativeTabs.Trigger.Label>Profile</NativeTabs.Trigger.Label>
+//         <NativeTabs.Trigger.Icon sf="person" />
+//       </NativeTabs.Trigger>
+//     </NativeTabs>
+//   );
+// }
+
+// export default function TabLayout() {
+//   return Platform.OS === "ios" ? <IOSTabLayout /> : <></>
+// }
