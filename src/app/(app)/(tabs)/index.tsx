@@ -60,7 +60,7 @@ export default function HomePage() {
             </View>
             <Text
               accessibilityRole="header"
-              className="font-inter-bold text-[22px] tracking-[-0.1px] text-foreground"
+              className="font-inter-bold text-[22px] text-foreground"
             >
               MyWorkout
             </Text>
