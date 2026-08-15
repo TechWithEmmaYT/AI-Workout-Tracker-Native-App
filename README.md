@@ -1,56 +1,87 @@
-# Welcome to your Expo app 👋
+# 🏋️ AI Workout Tracker – Native Android/IOS App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A production-ready AI workout tracker built with Expo and React Native. Create workouts, track every set, review your progress, and get AI-powered exercise guidance.
 
-## Get started
+> ### Commercial License Required
+>
+> This project is **free for personal use**. A commercial license is **required** for paid products, client work, content creation, or production applications.
+>
+> 👉 **[Get a Commercial License](https://techwithemma.gumroad.com/l/atlmby)**
 
-1. Install dependencies
+---
+
+## ❤️ Support the Channel
+
+If this project helps you, you can support my work by:
+
+- ☕ [Buy Me a Coffee](https://dub.sh/buy-me-coffee)
+- 🎥 [Subscribe on YouTube](https://tinyurl.com/subcribe-to-techwithEmma)
+- 🌟 [Star this repository](https://github.com/TechWithEmmaYT/AI-Workout-Tracker-Native-App)
+
+---
+
+## Watch the Full Build on YouTube
+
+> Build a complete native workout tracker from the UI and database to API deployment, production builds, and app-store publishing.
+
+👉 [Watch the Full Tutorial](https://www.youtube.com/)
+
+---
+
+## 🗝️ Key Features 👇
+
+- 📱 Expo & React Native App
+- 🧭 Expo Router Navigation
+- 🎨 NativeWind Styling
+- 🌗 Light & Dark Mode
+- 🔐 Email & Google Authentication (Better Auth)
+- 👤 Multi-step User Onboarding
+- 🏋️ Custom Workout Creation
+- 🔎 Exercise List, Search & Selection
+- 🖼️ Workout Image Uploads
+- ⏱️ Live Workout & Rest Timers
+- ✅ Sets, Reps & Weight Tracking
+- 📊 Daily Workout Stats
+- 🗓️ Workout Calendar & History
+- 🔥 Workout Streak Tracking
+- 🤖 AI Exercise Coach
+- 🗄️ PostgreSQL & Drizzle ORM
+- 🔄 Data Fetching with TanStack Query
+- 🛡️ Validation with Zod & React Hook Form
+- 🌐 Full-stack Expo API Routes
+- 🚀 API Deployment with EAS Hosting
+- 🧪 Expo Development Build
+- 🎯 App Icon & Splash Screen Setup
+- 📸 App Store Screenshot Design
+- 🚀 API Deployment with EAS Hosting
+- 📦 Production App Build & Publishing
+
+---
+
+## Getting Started / Running the Code
+
+1. **Clone the repository:**
 
    ```bash
-   npm install
+   git clone https://github.com/TechWithEmmaYT/AI-Workout-Tracker-Native-App.git
    ```
 
-2. Start the app
+2. **Watch the full video tutorial** to set up the database, environment variables, development build, API deployment, and production app build.
 
-   ```bash
-   npx expo start
-   ```
+---
 
-In the output, you'll find options to open the app in a
+## License Information
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+Commercial use requires a paid license. See [TECHWITHEMMA-LICENSE.md](./TECHWITHEMMA-LICENSE.md) for the complete terms.
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+👉 [Get a Commercial License](https://techwithemma.gumroad.com/l/atlmby)
 
-## Get a fresh project
+---
 
-When you're ready, run:
+## 📺 Subscribe for More Projects
 
-```bash
-npm run reset-project
-```
+I build real-world SaaS apps, AI systems, automation platforms, and production-ready mobile applications.
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+🔔 Subscribe here:
 
-### Other setup steps
-
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+👉 [https://tinyurl.com/subcribe-to-techwithEmma](https://tinyurl.com/subcribe-to-techwithEmma)
