@@ -82,11 +82,7 @@ export default function RootLayout() {
               animated
               style={scheme === "dark" ? "light" : "dark"}
             />
-            <Stack
-              screenOptions={{
-                headerShown: false,
-              }}
-            >
+            <Stack screenOptions={{ headerShown: false }}>
               <Stack.Protected guard={!session}>
                 <Stack.Screen name="(public)" />
               </Stack.Protected>

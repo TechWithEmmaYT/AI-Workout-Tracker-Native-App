@@ -9,12 +9,15 @@ import RecentWorkout from "@/components/home/recent-workout";
 import WorkoutTemplates from "@/components/home/workout-templates";
 import SafeAreaScreen from "@/components/ui/safe-area-screen";
 import WeekCalendar from "@/components/week-calendar";
+import { useStreak } from "@/contexts/streak-context";
 import { getHomeStatsQueryFn, getWorkoutCalendarDatesQueryFn } from "@/lib/api";
 
 const logo = require("../../../../assets/images/app-images/logo.png");
 const streakIcon = require("../../../../assets/images/app-images/streak-icon.png");
 
 export default function HomePage() {
+  const { currentStreak, showStreak } = useStreak();
+
   const [selectedDate, setSelectedDate] = useState(startOfDay(new Date()));
 
   const currentWeekStart = startOfWeek(new Date());
@@ -47,7 +50,7 @@ export default function HomePage() {
       >
         {/* {Header Section} */}
         <View className="flex-row items-center justify-between">
-          <View className="flex-row items-center">
+          <View className="flex-row items-center gap-0">
             <View className="-ml-4 h-11 w-16 overflow-hidden">
               <Image
                 className="h-full w-full"
@@ -57,22 +60,22 @@ export default function HomePage() {
             </View>
             <Text
               accessibilityRole="header"
-              className="font-inter-bold text-[22px] tracking-[-0.5px] text-foreground"
+              className="font-inter-bold text-[22px] tracking-[-0.1px] text-foreground"
             >
               MyWorkout
             </Text>
           </View>
           <Pressable
             className="h-11 flex-row items-center rounded-full border border-border bg-card px-3 active:bg-muted"
-            //onPress={showStreak}
+            onPress={showStreak}
           >
             <Image
               className="h-6 w-6"
               resizeMode="contain"
               source={streakIcon}
             />
-            <Text className="ml-1.5 font-inter-bold text-[14px] text-foreground">
-              {0}
+            <Text className="ml-1.5 mr-0.5 font-inter-bold text-[14px] text-foreground">
+              {currentStreak || 0}
             </Text>
           </Pressable>
         </View>

@@ -41,6 +41,7 @@ export default function MyWorkouts() {
   return (
     <View className="mt-5">
       <HomeSectionHeader title="My Workouts" onViewAll={openWorkouts} />
+
       {isPending ? (
         <View className="flex-row gap-2">
           {Array.from({ length: 3 }).map((_, index) => (

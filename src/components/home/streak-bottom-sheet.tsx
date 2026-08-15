@@ -3,15 +3,16 @@ import {
   eachDayOfInterval,
   endOfWeek,
   format,
+  isAfter,
   isSameDay,
+  startOfDay,
   startOfWeek,
 } from "date-fns";
 import { Image, Modal, Pressable, Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
+import Button from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-
-import Button from "../ui/button";
 
 const streakIcon = require("../../../assets/images/app-images/streak-icon.png");
 
@@ -31,12 +32,13 @@ export default function StreakBottomSheet({
   visible,
 }: StreakBottomSheetProps) {
   const insets = useSafeAreaInsets();
-  const today = new Date();
+  const today = startOfDay(new Date());
   const week = eachDayOfInterval({
     start: startOfWeek(today),
     end: endOfWeek(today),
   });
   const dayLabel = currentStreak === 1 ? "day" : "days";
+  const completedToday = completedDays.some((day) => isSameDay(day, today));
 
   return (
     <Modal
@@ -60,10 +62,7 @@ export default function StreakBottomSheet({
           style={{ paddingBottom: Math.max(insets.bottom, 20) + 12 }}
         >
           <View className="absolute -top-11 left-0 right-0 items-center">
-            <View
-              className="h-[88px] w-[88px] items-center justify-center rounded-full border-[5px] 
-            border-card bg-background shadow-lg shadow-primary/40"
-            >
+            <View className="h-[88px] w-[88px] items-center justify-center rounded-full border-[5px] border-card bg-background shadow-lg shadow-primary/40">
               <Image
                 accessibilityIgnoresInvertColors
                 accessibilityLabel="Workout streak"
@@ -87,12 +86,14 @@ export default function StreakBottomSheet({
                 isSameDay(completedDay, day),
               );
               const isToday = isSameDay(day, today);
+              const isFuture = isAfter(day, today);
 
               return (
                 <View
                   className={cn(
                     "h-[82px] flex-1 items-center justify-center rounded-2xl border bg-background",
                     isToday ? "border-primary" : "border-border",
+                    isFuture && "opacity-40",
                   )}
                   key={day.toISOString()}
                 >
@@ -117,9 +118,11 @@ export default function StreakBottomSheet({
             Best: {bestStreak} {bestStreak === 1 ? "day" : "days"}
           </Text>
           <Text className="mt-2 text-center font-inter text-[13px] leading-5 text-muted-foreground">
-            {currentStreak > 0
+            {completedToday
               ? "Keep showing up. Your consistency is getting stronger."
-              : "Complete a workout today to start your streak."}
+              : currentStreak > 0
+                ? "Complete a workout today to keep your streak going."
+                : "Complete a workout today to start your streak."}
           </Text>
 
           <Button className="mt-7 h-16 rounded-full" onPress={onClose}>

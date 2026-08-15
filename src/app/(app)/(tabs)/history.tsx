@@ -22,7 +22,7 @@ const History = () => {
     refetch,
   } = useQuery({
     queryKey: ["history"],
-    queryFn: getHistoryQueryFn,
+    queryFn: () => getHistoryQueryFn(),
   });
 
   const filtered = selectedDate

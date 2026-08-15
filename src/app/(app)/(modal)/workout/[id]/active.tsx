@@ -14,7 +14,7 @@ import {
 import { cn } from "@/lib/utils";
 import { useAppThemeColor } from "@/theme/app-theme";
 import { Feather } from "@expo/vector-icons";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useLocalSearchParams, useNavigation, useRouter } from "expo-router";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Alert, Pressable, Text, TextInput, View } from "react-native";
@@ -31,6 +31,7 @@ type Timer = ReturnType<typeof useWorkoutTimer>;
 
 const ActiveSessionPage = () => {
   const navigation = useNavigation();
+  const queryClient = useQueryClient();
   const router = useRouter();
   const { id } = useLocalSearchParams<{ id: string }>();
 
@@ -60,7 +61,7 @@ const ActiveSessionPage = () => {
   );
 
   const saveSession = useCallback(async () => {
-    if (!workout) return;
+    if (!workout) return false;
     setIsSaving(true);
     try {
       const sets: SaveSessionSet[] = [];
@@ -86,12 +87,20 @@ const ActiveSessionPage = () => {
         durationSeconds: Math.round(timer.elapsed),
         sets,
       });
-    } catch (error) {
-      Alert.alert("Could not save", "Check yout connection");
+
+      await Promise.all(
+        ["history", "home-stats", "workout-calendar", "streak"].map(
+          (queryKey) => queryClient.invalidateQueries({ queryKey: [queryKey] }),
+        ),
+      );
+      return true;
+    } catch {
+      Alert.alert("Could not save", "Check your connection");
+      return false;
     } finally {
       setIsSaving(false);
     }
-  }, [completed, timer, workout]);
+  }, [completed, queryClient, timer, workout]);
 
   const saveSessionRef = useRef(saveSession);
 
@@ -132,7 +141,9 @@ const ActiveSessionPage = () => {
           { text: "Discard", style: "destructive", onPress: leave },
           {
             text: "Save & Leave",
-            onPress: () => saveSessionRef.current().then(leave),
+            onPress: async () => {
+              if (await saveSessionRef.current()) leave();
+            },
           },
         ],
       );
@@ -157,13 +168,12 @@ const ActiveSessionPage = () => {
           },
         },
         {
-          text: "Finsh",
-          onPress: () =>
-            saveSession().then(async () => {
-              //
-              allowLeave.current = true;
-              router.replace("/history");
-            }),
+          text: "Finish",
+          onPress: async () => {
+            if (!(await saveSession())) return;
+            allowLeave.current = true;
+            router.replace("/history");
+          },
         },
       ],
     );

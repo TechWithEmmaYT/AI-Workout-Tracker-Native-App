@@ -278,3 +278,13 @@ export async function getWorkoutCalendarDatesQueryFn(start: Date, end: Date) {
 
   return data;
 }
+
+export async function getStreakQueryFn() {
+  const { data, error } = await authClient.$fetch<WorkoutCalendarDates>(
+    `${API_URL}/api/workout-sessions/streak`,
+    { method: "GET" },
+  );
+  if (error) throw new Error("Could not load streak");
+
+  return data;
+}

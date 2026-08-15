@@ -13,7 +13,7 @@ export default function HomeSectionHeader({
 }: HomeSectionHeaderProps) {
   return (
     <View className="mb-2 flex-row items-center justify-between">
-      <Text className="font-inter-bold text-[16px] tracking-[-0.2px] text-foreground">
+      <Text className="font-inter-bold text-[16px] tracking-[-0.1px] text-foreground">
         {title}
       </Text>
       {showViewAll ? (

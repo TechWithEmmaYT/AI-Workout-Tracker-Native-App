@@ -6,7 +6,7 @@ import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { createAuthMiddleware } from "better-auth/api";
 import { onboardingValuesSchema } from "./validations/onboarding-validation";
 
-const AUTH_URL = process.env.BETTER_AUTH_URL;
+const AUTH_URL = process.env.BETTER_AUTH_URL!;
 
 const getOnboarding = (body: unknown) => {
   const result = onboardingValuesSchema.safeParse(body);
@@ -21,7 +21,7 @@ const getOnboarding = (body: unknown) => {
 export const auth = betterAuth({
   appName: "MyWorkout",
   baseURL: AUTH_URL,
-  secret: process.env.BETTER_AUTH_SECRET,
+  secret: process.env.BETTER_AUTH_SECRET!,
   database: drizzleAdapter(db, {
     provider: "pg",
     schema: schema,
@@ -45,6 +45,8 @@ export const auth = betterAuth({
     "exp://192.168.*.*:*/**",
     "http://localhost:*",
     "http://192.168.*.*:*",
+    AUTH_URL,
+
     // ...(process.env.NODE_ENV === "development"
     //   ? [
     //       "exp://", // Trust all Expo URLs (prefix matching)

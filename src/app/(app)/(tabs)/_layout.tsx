@@ -29,7 +29,7 @@ export default function Tablayout() {
           paddingBottom: 7,
           paddingTop: 6,
           borderRadius: 50,
-          marginHorizontal: 8,
+          marginHorizontal: 5,
           position: "relative",
           shadowColor: "#333",
           borderColor: border,
