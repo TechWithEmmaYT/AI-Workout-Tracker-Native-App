@@ -1,7 +1,12 @@
 import { Feather } from "@expo/vector-icons";
 import { openBrowserAsync } from "expo-web-browser";
 import { useColorScheme } from "nativewind";
-import type { ComponentProps, ReactNode } from "react";
+import {
+  useEffect,
+  useState,
+  type ComponentProps,
+  type ReactNode,
+} from "react";
 import { Alert, Pressable, ScrollView, Switch, Text, View } from "react-native";
 
 import SafeAreaScreen from "@/components/ui/safe-area-screen";
@@ -20,7 +25,16 @@ export default function ProfilePage() {
 
   const { colorScheme, setColorScheme } = useColorScheme();
   const primary = useAppThemeColor("primary");
-  const isDark = colorScheme === "dark";
+  const [isDarkMode, setIsDarkMode] = useState(colorScheme === "dark");
+
+  useEffect(() => {
+    setIsDarkMode(colorScheme === "dark");
+  }, [colorScheme]);
+
+  const changeColorScheme = (value: boolean) => {
+    setIsDarkMode(value);
+    setColorScheme(value ? "dark" : "light");
+  };
 
   const name = session?.user.name ?? "User";
   const initials = name
@@ -93,11 +107,9 @@ export default function ProfilePage() {
             label="Dark Mode"
             right={
               <Switch
-                onValueChange={(value) =>
-                  setColorScheme(value ? "dark" : "light")
-                }
+                onValueChange={changeColorScheme}
                 trackColor={{ false: "#CBD5E1", true: primary }}
-                value={isDark}
+                value={isDarkMode}
               />
             }
           />

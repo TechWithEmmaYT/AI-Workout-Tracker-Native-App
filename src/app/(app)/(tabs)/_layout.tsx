@@ -79,7 +79,6 @@ export default function Tablayout() {
           ),
           tabBarAccessibilityLabel: "Create workout",
           tabBarLabel: () => null,
-          title: "",
         }}
       />
       <Tabs.Screen
