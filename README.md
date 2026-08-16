@@ -66,7 +66,11 @@ If this project helps you, you can support my work by:
    git clone https://github.com/TechWithEmmaYT/AI-Workout-Tracker-Native-App.git
    ```
 
-2. **Watch the full video tutorial** to set up the database, environment variables, development build, API deployment, and production app build.
+2. **Get the Commercial License:**
+   👉 [Purchase the Commercial License](https://techwithemma.gumroad.com/l/wyxpb)
+
+3. **Run the project:**
+   Follow the complete setup instructions in [RUN-THE-APP.md](./RUN-THE-APP.md).
 
 ---
 

@@ -16,20 +16,6 @@ This gives you the `eas` command globally, so you can run it from any project.
 eas login
 ```
 
----
-
-## For deploying your api to EAS Hosting
-
-(npx expo export --platform web
-
-## only api to be build
-
-npx expo export --platform web --no-ssg
-
-eas deploy --alias <pick_a_name>
-)
-----
-
 Builds run on Expo's servers, so it needs to know which account they belong to.
 
 ## 3. Configure your project for EAS

@@ -1,8 +1,8 @@
 import {
-    EXERCISE_DATA_URL,
-    EXERCISE_IMAGE_URL,
-    EXERCISE_NAMES,
-    type SourceExercise,
+  EXERCISE_DATA_URL,
+  EXERCISE_IMAGE_URL,
+  EXERCISE_NAMES,
+  type SourceExercise,
 } from "./exercises";
 
 const selectedNames = new Set<string>(EXERCISE_NAMES);
@@ -25,7 +25,8 @@ async function seed() {
   const values = source.map((exercise) => ({
     slug: exercise.id.replaceAll("_", "-").toLowerCase(),
     name: exercise.name,
-    userId: "RVnXsgnpQVYR2bEGoBJ2wGx7RwqPPPjC",
+    // pick a user id or remove it from the exercise table
+    userId: "<pick_a_user_id>",
     image: exercise.images[0]
       ? `${EXERCISE_IMAGE_URL}/${exercise.images[0]}`
       : null,
