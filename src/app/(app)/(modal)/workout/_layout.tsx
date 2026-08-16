@@ -1,21 +1,23 @@
 import { WorkoutDraftProvider } from "@/contexts/workout-draft-context";
 import { Stack } from "expo-router";
-import { useColorScheme } from "nativewind";
 
 export default function WorkoutLayout() {
-  const { colorScheme } = useColorScheme();
-  const statusBarStyle = colorScheme === "dark" ? "light" : "dark";
-
   return (
     <WorkoutDraftProvider>
-      <Stack screenOptions={{ headerShown: false, statusBarStyle }}>
+      <Stack
+        screenOptions={{
+          headerShown: false,
+        }}
+      >
+        {/* Modal presentation moved to the parent app stack.
         <Stack.Screen
           name="create"
           options={{
             animation: "slide_from_bottom",
             presentation: "fullScreenModal",
           }}
-        />
+        /> */}
+        <Stack.Screen name="create" />
         <Stack.Screen
           name="[id]/index"
           options={{
@@ -26,7 +28,8 @@ export default function WorkoutLayout() {
           name="[id]/active"
           options={{
             animation: "slide_from_bottom",
-            presentation: "fullScreenModal",
+            // The parent app stack already presents the workout flow as a modal.
+            // presentation: "fullScreenModal",
           }}
         />
         <Stack.Screen

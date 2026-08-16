@@ -4,10 +4,10 @@ import GoalStep from "@/components/onboarding/goal-step";
 import Button from "@/components/ui/button";
 import SafeAreaScreen from "@/components/ui/safe-area-screen";
 import {
-    answers,
-    saveOnboardingAnswer,
-    stepIndex,
-    steps,
+  answers,
+  saveOnboardingAnswer,
+  stepIndex,
+  steps,
 } from "@/constants/onboarding";
 import { OnboardingValues } from "@/lib/validations/onboarding-validation";
 import { useAppThemeColor } from "@/theme/app-theme";
@@ -57,7 +57,7 @@ const OnboardingStep = () => {
     }
   };
   return (
-    <SafeAreaScreen>
+    <SafeAreaScreen edges={["top", "bottom"]}>
       <View className="flex-1 px-6 pb-5 pt-4">
         <View className="flex-row items-center gap-2">
           <Pressable

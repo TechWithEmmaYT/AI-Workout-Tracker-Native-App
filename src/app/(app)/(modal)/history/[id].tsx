@@ -32,7 +32,7 @@ const SingleHistory = () => {
     );
   }
   return (
-    <SafeAreaScreen>
+    <SafeAreaScreen edges={["top", "bottom"]}>
       <ScrollView contentContainerClassName="px-5 pb-8">
         <View className="h-14 flex-row items-center justify-between">
           <Pressable
@@ -142,7 +142,7 @@ function StatCard({ label, value }: { label: string; value: string }) {
 }
 function HistoryDetailSkeleton() {
   return (
-    <SafeAreaScreen edges={["top"]}>
+    <SafeAreaScreen edges={["top", "bottom"]}>
       <View className="flex-1 px-5 pt-2">
         <Skeleton className="h-6 w-6 rounded-full" />
         <Skeleton className="mt-5 h-7 w-2/3 rounded-lg" />

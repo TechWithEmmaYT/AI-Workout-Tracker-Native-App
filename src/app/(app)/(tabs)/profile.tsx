@@ -72,7 +72,7 @@ export default function ProfilePage() {
     );
 
   return (
-    <SafeAreaScreen>
+    <SafeAreaScreen edges={["top", "bottom"]}>
       <ScrollView contentContainerClassName="px-5 pb-8">
         <Text className="pt-3 font-inter-bold text-[24px] text-foreground">
           Profile
@@ -106,11 +106,13 @@ export default function ProfilePage() {
             icon="moon"
             label="Dark Mode"
             right={
-              <Switch
-                onValueChange={changeColorScheme}
-                trackColor={{ false: "#CBD5E1", true: primary }}
-                value={isDarkMode}
-              />
+              <View>
+                <Switch
+                  onValueChange={changeColorScheme}
+                  trackColor={{ false: "#CBD5E1", true: primary }}
+                  value={isDarkMode}
+                />
+              </View>
             }
           />
         </Section>

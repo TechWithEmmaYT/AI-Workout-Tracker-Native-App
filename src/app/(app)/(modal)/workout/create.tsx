@@ -127,7 +127,7 @@ const CreateWorkout = () => {
     setSelectedExercises((prev) => prev.filter(({ id }) => id !== exerciseId));
   };
   return (
-    <SafeAreaScreen>
+    <SafeAreaScreen edges={["top", "bottom"]}>
       <KeyboardAwareScrollView
         bottomOffset={27}
         contentContainerClassName="flex-grow"

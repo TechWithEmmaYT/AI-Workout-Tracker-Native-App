@@ -39,7 +39,7 @@ const SingleExercise = () => {
 
   if (!id || isError) {
     return (
-      <SafeAreaScreen className="px-5">
+      <SafeAreaScreen className="px-5" edges={["top", "bottom"]}>
         <Pressable
           accessibilityLabel="Go back"
           accessibilityRole="button"

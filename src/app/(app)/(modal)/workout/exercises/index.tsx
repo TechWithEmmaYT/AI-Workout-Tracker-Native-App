@@ -58,10 +58,10 @@ const Index = () => {
   };
 
   return (
-    <SafeAreaScreen>
+    <SafeAreaScreen edges={["top", "bottom"]}>
       <FlatList
         data={exercises}
-        contentContainerClassName="px-5 pb-8"
+        contentContainerClassName="px-5 pb-8 pt-0"
         keyboardShouldPersistTaps="handled"
         keyExtractor={({ id }) => id}
         ListEmptyComponent={

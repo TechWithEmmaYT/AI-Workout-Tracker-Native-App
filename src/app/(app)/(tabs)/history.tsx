@@ -36,7 +36,7 @@ const History = () => {
     0,
   );
   return (
-    <SafeAreaScreen>
+    <SafeAreaScreen edges={["top", "bottom"]}>
       <FlatList
         data={isPending ? [] : filtered}
         contentContainerClassName="px-5 pb-6"
@@ -172,7 +172,7 @@ function HistoryCard({
 
 function SummaryCard({ label, value }: { label: string; value: string }) {
   return (
-    <View className="flex-1 rounded-xl border border-border bg-card shadow-sm p-4">
+    <View className="flex-1 rounded-xl border border-border bg-card p-4 shadow-xs">
       <Text className="font-inter text-[12px] text-muted-foreground">
         {label}
       </Text>

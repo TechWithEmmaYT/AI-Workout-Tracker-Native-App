@@ -1,4 +1,5 @@
 import { authClient } from "@/lib/auth-client";
+import { getStatusBarStyle } from "@/lib/utils";
 import { appThemeColors, appThemes } from "@/theme/app-theme";
 import {
   Inter_400Regular,
@@ -9,9 +10,15 @@ import {
 } from "@expo-google-fonts/inter";
 import { Feather, FontAwesome, FontAwesome6 } from "@expo/vector-icons";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { DarkTheme, DefaultTheme, Stack, ThemeProvider } from "expo-router";
+import {
+  DarkTheme,
+  DefaultTheme,
+  Stack,
+  ThemeProvider,
+  usePathname,
+} from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
-// import { StatusBar } from "expo-status-bar";
+import { StatusBar } from "expo-status-bar";
 import { useColorScheme } from "nativewind";
 import { useEffect, useState } from "react";
 import { View } from "react-native";
@@ -50,9 +57,11 @@ export default function RootLayout() {
   });
   const [appReady, setAppReady] = useState(false);
   const { colorScheme } = useColorScheme();
+  const pathname = usePathname();
   const scheme = colorScheme ?? "light";
   const backgroundColor = appThemeColors[scheme].background;
-  const statusBarStyle = scheme === "dark" ? "light" : "dark";
+  const statusBarStyle = getStatusBarStyle(pathname, scheme);
+
   const { data: session, isPending } = authClient.useSession();
 
   // check if font is loaded properly
@@ -79,16 +88,10 @@ export default function RootLayout() {
               },
             ]}
           >
-            {/* Removed: Status bar styles are now set in each route layout because Welcome needs statusbar light style while the other screens follow the app theme.
-            <StatusBar
-              key={scheme}
-              animated
-              style={scheme === "dark" ? "light" : "dark"}
-            /> */}
+            <StatusBar animated style={statusBarStyle} />
             <Stack
               screenOptions={{
                 headerShown: false,
-                statusBarStyle,
               }}
             >
               <Stack.Protected guard={!session}>

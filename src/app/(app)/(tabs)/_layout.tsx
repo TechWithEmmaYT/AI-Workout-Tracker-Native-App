@@ -1,17 +1,18 @@
-//import { NativeTabs } from "expo-router/native-tabs";
 import { useAppThemeColor } from "@/theme/app-theme";
 import { Feather } from "@expo/vector-icons";
 import { Tabs, useRouter } from "expo-router";
-import { Pressable, View } from "react-native";
+// import { NativeTabs } from "expo-router/unstable-native-tabs";
+import { Platform, Pressable, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
-export default function Tablayout() {
+function CustomTabLayout() {
   const router = useRouter();
   const insets = useSafeAreaInsets();
   const tabBackground = useAppThemeColor("tabBackground");
   const primary = useAppThemeColor("primary");
   const mutedForeground = useAppThemeColor("mutedForeground");
   const border = useAppThemeColor("border");
+  const bottomSpace = Platform.OS === "android" ? 12 : 0;
   return (
     <Tabs
       screenOptions={{
@@ -24,7 +25,7 @@ export default function Tablayout() {
         },
         tabBarStyle: {
           backgroundColor: tabBackground,
-          bottom: insets.bottom + 12,
+          bottom: insets.bottom + bottomSpace,
           height: 66,
           left: 13,
           paddingBottom: 7,
@@ -105,38 +106,52 @@ export default function Tablayout() {
   );
 }
 
+export default CustomTabLayout;
+
 // For Ios Simulator Test NativeTab
-// function IOSTabLayout() {
-//   return (
-//     <NativeTabs>
-//       <NativeTabs.Trigger name="index">
-//         <NativeTabs.Trigger.Label>Home</NativeTabs.Trigger.Label>
-//         <NativeTabs.Trigger.Icon sf="house" />
-//       </NativeTabs.Trigger>
+/*
+function IOSTabLayout() {
+  const router = useRouter();
 
-//       <NativeTabs.Trigger name="workouts">
-//         <NativeTabs.Trigger.Label>Workouts</NativeTabs.Trigger.Label>
-//         <NativeTabs.Trigger.Icon sf="figure.strengthtraining.traditional" />
-//       </NativeTabs.Trigger>
+  return (
+    <NativeTabs>
+      <NativeTabs.Trigger name="index">
+        <NativeTabs.Trigger.Label>Home</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Icon sf="house" />
+      </NativeTabs.Trigger>
 
-//       <NativeTabs.Trigger name="create">
-//         <NativeTabs.Trigger.Label>Create</NativeTabs.Trigger.Label>
-//         <NativeTabs.Trigger.Icon sf="plus.circle.fill" />
-//       </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="workouts">
+        <NativeTabs.Trigger.Label>Workouts</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Icon sf="figure.strengthtraining.traditional" />
+      </NativeTabs.Trigger>
 
-//       <NativeTabs.Trigger name="history">
-//         <NativeTabs.Trigger.Label>History</NativeTabs.Trigger.Label>
-//         <NativeTabs.Trigger.Icon sf="calendar" />
-//       </NativeTabs.Trigger>
+      <NativeTabs.Trigger
+        disabled
+        listeners={{
+          tabPress: () => {
+            router.push("/workout/create");
+          },
+        }}
+        name="create"
+      >
+        <NativeTabs.Trigger.Label>Create</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Icon sf="plus.circle.fill" />
+      </NativeTabs.Trigger>
 
-//       <NativeTabs.Trigger name="profile">
-//         <NativeTabs.Trigger.Label>Profile</NativeTabs.Trigger.Label>
-//         <NativeTabs.Trigger.Icon sf="person" />
-//       </NativeTabs.Trigger>
-//     </NativeTabs>
-//   );
-// }
+      <NativeTabs.Trigger name="history">
+        <NativeTabs.Trigger.Label>History</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Icon sf="calendar" />
+      </NativeTabs.Trigger>
 
-// export default function TabLayout() {
-//   return Platform.OS === "ios" ? <IOSTabLayout /> : <></>
-// }
+      <NativeTabs.Trigger name="profile">
+        <NativeTabs.Trigger.Label>Profile</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Icon sf="person" />
+      </NativeTabs.Trigger>
+    </NativeTabs>
+  );
+}
+
+export default function TabLayout() {
+  return Platform.OS === "ios" ? <IOSTabLayout /> : <CustomTabLayout />;
+}
+*/

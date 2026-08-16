@@ -23,29 +23,30 @@ export default function WorkoutTemplates() {
       <HomeSectionHeader title="Workout Templates" showViewAll={false} />
       <ScrollView
         className="-mx-5"
-        contentContainerClassName="gap-2 px-5"
+        contentContainerClassName="gap-2 px-5 py-1"
         horizontal
         showsHorizontalScrollIndicator={false}
       >
         {templates.map((template) => (
-          <Pressable
-            className="h-[116px] w-[104px] overflow-hidden rounded-xl bg-muted active:opacity-85"
-            key={template.id}
-            onPress={() => router.push("/workouts")}
-          >
-            <Image
-              className="absolute inset-0 h-full w-full"
-              source={template.image}
-            />
-            <View className="absolute inset-x-0 bottom-0 bg-overlay/70 px-2.5 pb-2.5 pt-6">
-              <Text className="font-inter-semibold text-[12px] text-white">
-                {template.title}
-              </Text>
-              <Text className="mt-0.5 font-inter text-[10px] text-white/80">
-                {template.workouts} Workouts
-              </Text>
-            </View>
-          </Pressable>
+          <View className="rounded-xl shadow-xs" key={template.id}>
+            <Pressable
+              className="h-[116px] w-[104px] overflow-hidden rounded-xl bg-muted active:opacity-85"
+              onPress={() => router.push("/workouts")}
+            >
+              <Image
+                className="absolute inset-0 h-full w-full"
+                source={template.image}
+              />
+              <View className="absolute inset-x-0 bottom-0 bg-overlay/70 px-2.5 pb-2.5 pt-6">
+                <Text className="font-inter-semibold text-[12px] text-white">
+                  {template.title}
+                </Text>
+                <Text className="mt-0.5 font-inter text-[10px] text-white/80">
+                  {template.workouts} Workouts
+                </Text>
+              </View>
+            </Pressable>
+          </View>
         ))}
       </ScrollView>
     </View>

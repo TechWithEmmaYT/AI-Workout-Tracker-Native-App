@@ -7,6 +7,9 @@ module.exports = {
   presets: [require("nativewind/preset")],
   theme: {
     extend: {
+      boxShadow: {
+        xs: "0 1px 1px rgb(0 0 0 / 0.03)",
+      },
       colors: {
         accent: color("accent"),
         background: color("background"),

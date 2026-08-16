@@ -92,7 +92,7 @@ export default function WeekCalendar({
                   selected: isSelected,
                 }}
                 className={cn(
-                  "h-[88px] flex-1 items-center justify-center rounded-2xl border",
+                  "h-[88px] flex-1 items-center justify-center rounded-2xl border shadow-xs",
                   isSelected
                     ? "border-primary bg-card"
                     : "border-border bg-background/80",

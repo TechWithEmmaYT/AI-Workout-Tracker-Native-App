@@ -27,12 +27,12 @@ export default function RecentWorkout() {
       />
 
       {isPending ? (
-        <Skeleton className="min-h-[88px] w-full rounded-xl" />
+        <Skeleton className="min-h-[88px] w-full rounded-xl shadow-xs" />
       ) : !recent ? (
         <EmptyState icon="clock" message="No recent workouts yet." />
       ) : (
         <Pressable
-          className="min-h-[88px] flex-row items-center rounded-xl border border-border bg-card p-3 active:opacity-85"
+          className="min-h-[88px] flex-row items-center rounded-xl border border-border bg-card p-3 shadow-xs active:opacity-85"
           onPress={() =>
             router.push({
               pathname: "/(app)/(modal)/history/[id]",

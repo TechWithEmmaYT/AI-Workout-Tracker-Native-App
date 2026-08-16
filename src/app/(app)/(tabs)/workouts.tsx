@@ -35,7 +35,7 @@ const Workouts = () => {
   });
 
   return (
-    <SafeAreaScreen>
+    <SafeAreaScreen edges={["top", "bottom"]}>
       <FlatList
         data={workouts}
         contentContainerClassName="px-5 pb-24"

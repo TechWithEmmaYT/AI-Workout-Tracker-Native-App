@@ -207,9 +207,10 @@ const ActiveSessionPage = () => {
     );
   }
   return (
-    <SafeAreaScreen>
+    <SafeAreaScreen edges={["top", "bottom"]}>
       <KeyboardAwareScrollView
         bottomOffset={24}
+        className="flex-1"
         contentContainerClassName="flex-grow"
         keyboardDismissMode="interactive"
         keyboardShouldPersistTaps="handled"
@@ -224,9 +225,9 @@ const ActiveSessionPage = () => {
           onFinish={finishWorkout}
           onLeave={router.back}
         />
-        <LoadingModal message="Saving workout..." visible={isSaving} />
-        <KeyboardToolbar />
       </KeyboardAwareScrollView>
+      <LoadingModal message="Saving workout..." visible={isSaving} />
+      <KeyboardToolbar />
     </SafeAreaScreen>
   );
 };

@@ -20,7 +20,7 @@ const mockup = require("../../../assets/images/app-images/app-mockup.png");
 const Welcome = () => {
   const primaryForeground = useAppThemeColor("primaryForeground");
 
-  // Removed: <-- please check the (public layout) --->
+  // Removed: <-- please check the (root layout) --->
   // useFocusEffect(
   //   useCallback(() => {
   //     const entry = StatusBar.pushStackEntry({
@@ -36,7 +36,7 @@ const Welcome = () => {
   return (
     <ImageBackground className="flex-1" resizeMode="cover" source={bgImg}>
       <View className="absolute inset-0 bg-black/20" />
-      <SafeAreaView className="flex-1">
+      <SafeAreaView className="flex-1" edges={["top", "bottom"]}>
         <ScrollView
           contentContainerClassName="flex-grow px-5 pb-4 pt-2"
           showsVerticalScrollIndicator={false}

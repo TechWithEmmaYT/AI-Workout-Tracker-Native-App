@@ -97,7 +97,7 @@ const SignUp = () => {
     }
   };
   return (
-    <SafeAreaScreen>
+    <SafeAreaScreen edges={["top", "bottom"]}>
       <KeyboardAwareScrollView
         bottomOffset={24}
         contentContainerClassName="flex-grow"
