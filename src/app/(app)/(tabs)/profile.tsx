@@ -32,8 +32,8 @@ export default function ProfilePage() {
   }, [colorScheme]);
 
   const changeColorScheme = (value: boolean) => {
-    setIsDarkMode(value);
     setColorScheme(value ? "dark" : "light");
+    setIsDarkMode(value);
   };
 
   const name = session?.user.name ?? "User";
