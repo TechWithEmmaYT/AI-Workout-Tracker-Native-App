@@ -3,11 +3,13 @@ import type { ComponentProps } from "react";
 import { Text, View } from "react-native";
 
 import Button from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import { useAppThemeColor } from "@/theme/app-theme";
 
 type EmtyStateProps = {
   icon?: ComponentProps<typeof Feather>["name"];
   message: string;
+  className?: string;
   onRetry?: () => void;
   retryLabel?: string;
 };
@@ -15,15 +17,21 @@ type EmtyStateProps = {
 export default function EmtyState({
   icon = "wifi-off",
   message,
+  className,
   onRetry,
   retryLabel = "Try Again",
 }: EmtyStateProps) {
-  const muted = useAppThemeColor("mutedForeground");
+  const mutedForeground = useAppThemeColor("mutedForeground");
 
   return (
-    <View className="items-center py-16">
-      <Feather color={muted} name={icon} size={28} />
-      <Text className="mt-3 font-inter-semibold text-foreground">
+    <View
+      className={cn(
+        "items-center py-10 rounded-2xl bg-card border border-border shadow-xs",
+        className && className,
+      )}
+    >
+      <Feather color={mutedForeground} name={icon} size={28} />
+      <Text className="mt-3 text-center font-inter-semibold text-foreground">
         {message}
       </Text>
       {onRetry ? (

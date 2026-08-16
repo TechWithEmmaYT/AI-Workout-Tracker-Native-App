@@ -82,13 +82,7 @@ export default function RootLayout() {
               animated
               style={scheme === "dark" ? "light" : "dark"}
             />
-            <Stack
-              screenOptions={{
-                headerShown: false,
-                // // Update Android and iOS status-bar icons with the app theme..
-                // statusBarStyle: scheme === "dark" ? "light" : "dark",
-              }}
-            >
+            <Stack screenOptions={{ headerShown: false }}>
               <Stack.Protected guard={!session}>
                 <Stack.Screen name="(public)" />
               </Stack.Protected>

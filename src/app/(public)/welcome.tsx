@@ -1,14 +1,13 @@
 import Button from "@/components/ui/button";
 import { useAppThemeColor } from "@/theme/app-theme";
 import { Feather } from "@expo/vector-icons";
-import { Link, useFocusEffect } from "expo-router";
-import { useCallback } from "react";
+import { Link } from "expo-router";
 import {
   Image,
   ImageBackground,
   Pressable,
   ScrollView,
-  StatusBar,
+  // StatusBar,
   Text,
   View,
 } from "react-native";
@@ -21,17 +20,18 @@ const mockup = require("../../../assets/images/app-images/app-mockup.png");
 const Welcome = () => {
   const primaryForeground = useAppThemeColor("primaryForeground");
 
-  useFocusEffect(
-    useCallback(() => {
-      const entry = StatusBar.pushStackEntry({
-        backgroundColor: "#020817",
-        barStyle: "light-content",
-        translucent: false,
-      });
-
-      return () => StatusBar.popStackEntry(entry);
-    }, []),
-  );
+  // Removed: <-- please check the (public layout) --->
+  // useFocusEffect(
+  //   useCallback(() => {
+  //     const entry = StatusBar.pushStackEntry({
+  //       backgroundColor: "#020817",
+  //       barStyle: "light-content",
+  //       translucent: false,
+  //     });
+  //
+  //     return () => StatusBar.popStackEntry(entry);
+  //   }, []),
+  // );
 
   return (
     <ImageBackground className="flex-1" resizeMode="cover" source={bgImg}>

@@ -53,7 +53,7 @@ const History = () => {
               message={
                 selectedDate
                   ? "No workouts on this day"
-                  : "No workouts yet. Complete a workout to see it here"
+                  : "No workouts yet. Complete a workout"
               }
             />
           )
@@ -139,7 +139,7 @@ function HistoryCard({
 
   return (
     <Pressable
-      className="flex-row items-center rounded-xl border border-border bg-card p-3 active:bg-muted"
+      className="flex-row items-center rounded-xl border border-border bg-card shadow-xs p-3 active:bg-muted"
       onPress={onPress}
     >
       {item.image ? (
@@ -172,7 +172,7 @@ function HistoryCard({
 
 function SummaryCard({ label, value }: { label: string; value: string }) {
   return (
-    <View className="flex-1 rounded-xl border border-border bg-card p-4">
+    <View className="flex-1 rounded-xl border border-border bg-card shadow-sm p-4">
       <Text className="font-inter text-[12px] text-muted-foreground">
         {label}
       </Text>
