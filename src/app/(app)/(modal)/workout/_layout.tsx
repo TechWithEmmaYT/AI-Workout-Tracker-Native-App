@@ -1,6 +1,8 @@
 import { WorkoutDraftProvider } from "@/contexts/workout-draft-context";
 import { Stack } from "expo-router";
 
+//UPDATE: Screens use the platform's default animation; the active workout uses a fade. (you can change it if you want)
+
 export default function WorkoutLayout() {
   return (
     <WorkoutDraftProvider>
@@ -9,40 +11,39 @@ export default function WorkoutLayout() {
           headerShown: false,
         }}
       >
-        {/* Modal presentation moved to the parent app stack.
         <Stack.Screen
           name="create"
-          options={{
-            animation: "slide_from_bottom",
-            presentation: "fullScreenModal",
-          }}
-        /> */}
-        <Stack.Screen name="create" />
+          //Modal presentation moved to the parent app stack.
+          // options={{
+          //     animation: "slide_from_bottom",
+          //     presentation: "fullScreenModal",
+          //   }}
+        />
         <Stack.Screen
           name="[id]/index"
-          options={{
-            animation: "slide_from_right",
-          }}
+          // options={{
+          //   animation: "slide_from_right",
+          // }}
         />
         <Stack.Screen
           name="[id]/active"
           options={{
-            animation: "slide_from_bottom",
-            // The parent app stack already presents the workout flow as a modal.
-            // presentation: "fullScreenModal",
+            animation: "fade",
+            // The parent stack already presents it as modal.
+            //presentation: "fullScreenModal",
           }}
         />
         <Stack.Screen
           name="exercises/index"
-          options={{
-            animation: "slide_from_right",
-          }}
+          // options={{
+          //   animation: "slide_from_right",
+          // }}
         />
         <Stack.Screen
           name="exercises/[id]"
-          options={{
-            animation: "slide_from_right",
-          }}
+          // options={{
+          //   animation: "slide_from_right",
+          // }}
         />
       </Stack>
     </WorkoutDraftProvider>

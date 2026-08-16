@@ -61,6 +61,7 @@ function CustomTabLayout() {
       />
       <Tabs.Screen
         name="create"
+        // add this instead of redirect
         listeners={{
           tabPress: (event) => {
             event.preventDefault();

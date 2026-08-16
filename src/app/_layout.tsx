@@ -21,7 +21,7 @@ import * as SplashScreen from "expo-splash-screen";
 import { StatusBar } from "expo-status-bar";
 import { useColorScheme } from "nativewind";
 import { useEffect, useState } from "react";
-import { View } from "react-native";
+import { Platform, View } from "react-native";
 import { KeyboardProvider } from "react-native-keyboard-controller";
 import "../global.css";
 
@@ -60,6 +60,8 @@ export default function RootLayout() {
   const pathname = usePathname();
   const scheme = colorScheme ?? "light";
   const backgroundColor = appThemeColors[scheme].background;
+
+  // UPDATE: helper method to determine the style value
   const statusBarStyle = getStatusBarStyle(pathname, scheme);
 
   const { data: session, isPending } = authClient.useSession();
@@ -88,10 +90,14 @@ export default function RootLayout() {
               },
             ]}
           >
-            <StatusBar animated style={statusBarStyle} />
+            {Platform.OS === "ios" && (
+              <StatusBar animated style={statusBarStyle} />
+            )}
             <Stack
               screenOptions={{
                 headerShown: false,
+                //USE: Stack controls Android; expo-status-bar above controls iOS.
+                ...(Platform.OS === "android" && { statusBarStyle }),
               }}
             >
               <Stack.Protected guard={!session}>
