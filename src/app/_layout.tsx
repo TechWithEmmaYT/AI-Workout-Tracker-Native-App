@@ -11,7 +11,7 @@ import { Feather, FontAwesome, FontAwesome6 } from "@expo/vector-icons";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { DarkTheme, DefaultTheme, Stack, ThemeProvider } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
-// import { StatusBar } from "expo-status-bar";
+import { StatusBar } from "expo-status-bar";
 import { useColorScheme } from "nativewind";
 import { useEffect, useState } from "react";
 import { View } from "react-native";
@@ -77,16 +77,16 @@ export default function RootLayout() {
               },
             ]}
           >
-            {/* <StatusBar
+            <StatusBar
               key={scheme}
               animated
               style={scheme === "dark" ? "light" : "dark"}
-            /> */}
+            />
             <Stack
               screenOptions={{
                 headerShown: false,
-                // Update Android and iOS status-bar icons with the app theme..
-                statusBarStyle: scheme === "dark" ? "light" : "dark",
+                // // Update Android and iOS status-bar icons with the app theme..
+                // statusBarStyle: scheme === "dark" ? "light" : "dark",
               }}
             >
               <Stack.Protected guard={!session}>
