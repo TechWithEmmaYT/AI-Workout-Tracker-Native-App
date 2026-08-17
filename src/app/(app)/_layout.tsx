@@ -12,6 +12,7 @@ export default function Applayout() {
         <Stack.Screen name="(tabs)" />
         <Stack.Screen
           name="(modal)/workout"
+          //UPDATED the mode presentation here
           options={{
             animation: "slide_from_bottom",
             presentation: "fullScreenModal",
