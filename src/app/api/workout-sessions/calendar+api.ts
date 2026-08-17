@@ -1,9 +1,10 @@
 import { db, workoutSessions } from "@/db";
 import { auth } from "@/lib/auth";
+import { differenceInCalendarDays } from "date-fns";
 import { and, eq, gte, lt } from "drizzle-orm";
 import { z } from "zod";
 
-const MAX_RANGE_MS = 22 * 24 * 60 * 60 * 1000;
+//const MAX_RANGE_MS = 22 * 24 * 60 * 60 * 1000;
 
 const rangeDateSchema = z
   .object({
@@ -14,10 +15,11 @@ const rangeDateSchema = z
     error: "End date must be greater than the start date",
   })
   .refine(
-    ({ end, start }) =>
-      new Date(end).getTime() - new Date(start).getTime() <= MAX_RANGE_MS,
+    ({ end, start }) => {
+      return differenceInCalendarDays(new Date(end), new Date(start)) <= 22;
+    },
     {
-      error: "Date range cannot be more than 22 days",
+      message: "Date range cannot be more than 22 days",
     },
   );
 

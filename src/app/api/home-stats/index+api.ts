@@ -1,9 +1,10 @@
 import { db, workoutSessions } from "@/db";
 import { auth } from "@/lib/auth";
+import { differenceInCalendarDays } from "date-fns";
 import { and, eq, gte, lt } from "drizzle-orm";
 import { z } from "zod";
 
-const MAX_DAY_RANGE_MS = 26 * 60 * 60 * 1000;
+// const MAX_DAY_RANGE_MS = 26 * 60 * 60 * 1000;
 
 const rangeDateSchema = z
   .object({
@@ -14,12 +15,21 @@ const rangeDateSchema = z
     error: "End date must be greater than the start date",
   })
   .refine(
-    ({ end, start }) =>
-      new Date(end).getTime() - new Date(start).getTime() <= MAX_DAY_RANGE_MS,
+    ({ end, start }) => {
+      // Safely checks calendar days
+      return differenceInCalendarDays(new Date(end), new Date(start)) <= 1;
+    },
     {
-      error: "Date range is too long",
+      message: "Date range is too long",
     },
   );
+// .refine(
+//   ({ end, start }) =>
+//     new Date(end).getTime() - new Date(start).getTime() <= MAX_DAY_RANGE_MS,
+//   {
+//     error: "Date range is too long",
+//   },
+// );
 
 export async function GET(request: Request) {
   const session = await auth.api.getSession({ headers: request.headers });

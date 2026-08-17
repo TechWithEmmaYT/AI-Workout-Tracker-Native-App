@@ -1,7 +1,8 @@
 import { WorkoutDraftProvider } from "@/contexts/workout-draft-context";
 import { Stack } from "expo-router";
 
-//UPDATE: Screens use the platform's default animation; the active workout uses a fade. (you can change it if you want)
+//UPDATE: Screens use the platform's default animation; the active workout uses a fade.
+//  (you can change it if you want)
 
 export default function WorkoutLayout() {
   return (
