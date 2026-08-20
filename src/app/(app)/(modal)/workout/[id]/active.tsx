@@ -226,6 +226,7 @@ const ActiveSessionPage = () => {
           onLeave={router.back}
         />
       </KeyboardAwareScrollView>
+      <RestTimer timer={timer} />
       <LoadingModal message="Saving workout..." visible={isSaving} />
       <KeyboardToolbar />
     </SafeAreaScreen>
@@ -251,8 +252,6 @@ function ActiveSession({
   toggleSet,
   workout,
 }: ActiveSessionProps) {
-  const insets = useSafeAreaInsets();
-
   const muted = useAppThemeColor("mutedForeground");
   const primary = useAppThemeColor("primary");
   const [expanded, setExpanded] = useState(workout.exercises[0]?.name ?? "");
@@ -264,7 +263,7 @@ function ActiveSession({
   ).length;
 
   return (
-    <>
+    <View className="flex-1">
       <View className="flex-grow px-5 pb-32">
         <View className="flex-row items-start justify-between pt-4">
           <View>
@@ -420,24 +419,31 @@ function ActiveSession({
           Finish Workout
         </Button>
       </View>
-      {timer.rest > 0 && (
-        <View
-          className="absolute right-5 h-28 w-28 items-center justify-center rounded-full border-4 border-slate-700 bg-slate-950 p-3 shadow-lg"
-          style={{ bottom: insets.bottom + 10 }}
-        >
-          <Text className="font-inter text-[10px] text-white">Rest Timer</Text>
-          <Text className="mt-1 font-inter-bold text-[20px] text-blue-400">
-            {Math.floor(timer.rest / 60)}:
-            {String(Math.floor(timer.rest % 60)).padStart(2, "0")}
-          </Text>
-          <Pressable onPress={timer.skipRest}>
-            <Text className="mt-1 font-inter-semibold text-[10px] text-blue-400">
-              Skip
-            </Text>
-          </Pressable>
-        </View>
-      )}
-    </>
+    </View>
+  );
+}
+
+function RestTimer({ timer }: { timer: Timer }) {
+  const insets = useSafeAreaInsets();
+
+  if (timer.rest <= 0) return null;
+
+  return (
+    <View
+      className="absolute right-5 h-28 w-28 items-center justify-center rounded-full border-4 border-slate-700 bg-slate-950 p-3 shadow-lg"
+      style={{ bottom: insets.bottom + 10 }}
+    >
+      <Text className="font-inter text-[10px] text-white">Rest Timer</Text>
+      <Text className="mt-1 font-inter-bold text-[20px] text-blue-400">
+        {Math.floor(timer.rest / 60)}:
+        {String(Math.floor(timer.rest % 60)).padStart(2, "0")}
+      </Text>
+      <Pressable onPress={timer.skipRest}>
+        <Text className="mt-1 font-inter-semibold text-[10px] text-blue-400">
+          Skip
+        </Text>
+      </Pressable>
+    </View>
   );
 }
 

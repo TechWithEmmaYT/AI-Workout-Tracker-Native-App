@@ -1,10 +1,11 @@
 import { useAppThemeColor } from "@/theme/app-theme";
 import { Feather } from "@expo/vector-icons";
 import { Tabs, useRouter } from "expo-router";
-// import { NativeTabs } from "expo-router/unstable-native-tabs";
+import { NativeTabs } from "expo-router/unstable-native-tabs";
 import { Platform, Pressable, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
+// Scroll Down to see the Native Glass IOS Tab
 function CustomTabLayout() {
   const router = useRouter();
   const insets = useSafeAreaInsets();
@@ -107,10 +108,7 @@ function CustomTabLayout() {
   );
 }
 
-export default CustomTabLayout;
-
 // For Ios Simulator Test NativeTab
-/*
 function IOSTabLayout() {
   const router = useRouter();
 
@@ -153,6 +151,7 @@ function IOSTabLayout() {
 }
 
 export default function TabLayout() {
-  return Platform.OS === "ios" ? <IOSTabLayout /> : <CustomTabLayout />;
+  // replace the CustomTabLayout for ios with IOSTabLayout
+  // to see the glass tab
+  return Platform.OS === "ios" ? <CustomTabLayout /> : <CustomTabLayout />;
 }
-*/
